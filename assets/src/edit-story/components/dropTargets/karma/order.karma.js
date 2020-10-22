@@ -17,7 +17,7 @@
 /**
  * External dependencies
  */
-import { waitForElementToBeRemoved, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 
 /**
  * Internal dependencies
@@ -65,7 +65,6 @@ describe('Drop-Target order', () => {
       moveBy(0, -20),
       up(),
     ]);
-    await waitForElementToBeRemoved(replacementImageFrame);
     const backgroundId = await getBackgroundElementId(fixture);
     // TODO: refactor after #2386?
     const topImageImg = fixture.editor.canvas.displayLayer
@@ -105,7 +104,6 @@ describe('Drop-Target order', () => {
       moveBy(0, 10),
       up(),
     ]);
-    await waitForElementToBeRemoved(replacementImageFrame);
     const topImageImg = fixture.editor.canvas.displayLayer
       .display(topImage.id)
       .node.querySelector('img');
