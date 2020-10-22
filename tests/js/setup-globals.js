@@ -16,6 +16,7 @@
 
 window.webStoriesEditorSettings = {};
 window.webStoriesDashboardSettings = {};
+window.webStoriesEmbedBlockSettings = { blockAttributes: {} };
 
 global.wp = {
   media: {
