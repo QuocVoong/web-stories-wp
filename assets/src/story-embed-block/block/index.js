@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+/* global webStoriesEmbedBlockSettings */
 /**
  * WordPress dependencies
  */
@@ -31,6 +31,11 @@ import transforms from './transforms';
 
 const { name, category, attributes } = metadata;
 
+const blockAttributes = {
+  ...attributes,
+  ...webStoriesEmbedBlockSettings.blockAttributes,
+};
+
 const settings = {
   title: __('Web Stories', 'web-stories'),
   description: __('Embed a visual story.', 'web-stories'),
@@ -42,7 +47,7 @@ const settings = {
     /* translators: block keyword. */
     __('story', 'web-stories'),
   ],
-  attributes,
+  attributes: blockAttributes,
   example: {
     // TODO: Replace with something custom.
     attributes: {

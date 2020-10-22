@@ -66,35 +66,13 @@ class Embed_Block extends Embed_Base {
 
 		// todo: use register_block_type_from_metadata() once generally available.
 
+
 		// Note: does not use 'script' and 'style' args, and instead uses 'render_callback'
 		// to enqueue these assets only when needed.
 		register_block_type(
 			self::BLOCK_NAME,
 			[
-				'attributes'      => [
-					'url'    => [
-						'type' => 'string',
-					],
-					'title'  => [
-						'type'    => 'string',
-						'default' => __( 'Web Story', 'web-stories' ),
-					],
-					'poster' => [
-						'type' => 'string',
-					],
-					'width'  => [
-						'type'    => 'number',
-						'default' => 360,
-					],
-					'height' => [
-						'type'    => 'number',
-						'default' => 600,
-					],
-					'align'  => [
-						'type'    => 'string',
-						'default' => 'none',
-					],
-				],
+				'attributes'      => $this->block_attributes(),
 				'render_callback' => [ $this, 'render_block' ],
 				'editor_script'   => self::SCRIPT_HANDLE,
 				'editor_style'    => self::SCRIPT_HANDLE,
@@ -111,7 +89,42 @@ class Embed_Block extends Embed_Base {
 	 */
 	private function get_script_settings() {
 		return [
-			'publicPath' => WEBSTORIES_PLUGIN_DIR_URL . 'assets/js/',
+			'publicPath'      => WEBSTORIES_PLUGIN_DIR_URL . 'assets/js/',
+			'blockAttributes' => $this->block_attributes(),
+		];
+	}
+
+	/**
+	 * Block attributes.
+	 *
+	 * @return array
+	 */
+	private function block_attributes() {
+		$attrs = $this->default_attrs();
+		return [
+			'url'    => [
+				'type' => 'string',
+			],
+			'title'  => [
+				'type'    => 'string',
+				'default' => __( 'Web Story', 'web-stories' ),
+			],
+			'poster' => [
+				'type'    => 'string',
+				'default' => $attrs['poster'],
+			],
+			'width'  => [
+				'type'    => 'number',
+				'default' => $attrs['width'],
+			],
+			'height' => [
+				'type'    => 'number',
+				'default' => $attrs['height'],
+			],
+			'align'  => [
+				'type'    => 'string',
+				'default' => $attrs['align'],
+			],
 		];
 	}
 

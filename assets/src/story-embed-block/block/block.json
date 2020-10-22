@@ -12,16 +12,13 @@
       "type": "string"
     },
     "width": {
-      "type": "number",
-      "default": 360
+      "type": "number"
     },
     "height": {
-      "type": "number",
-      "default": 600
+      "type": "number"
     },
     "align": {
-      "type": "string",
-      "default": "none"
+      "type": "string"
     }
   }
 }
